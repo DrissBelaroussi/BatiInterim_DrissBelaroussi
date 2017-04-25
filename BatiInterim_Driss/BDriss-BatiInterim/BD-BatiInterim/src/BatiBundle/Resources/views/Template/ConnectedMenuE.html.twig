@@ -1,0 +1,40 @@
+{# empty Twig template #}
+
+<body>
+
+    <nav class="navbar navbar-inverse" style="margin : 5px ">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('Connexion') }}">Home</a>
+               
+            </div>
+                
+                <ul class="nav navbar-nav">
+               
+                   
+                   
+                <li> <a href="{{ path('GererArtisans') }}"> Les artisans</a></li>
+                <li>     <a href="{{ path('CreerChantier') }}"> Les chantiers </a> </li>               
+                <li> <a href="{{ path('ConsulterAffectations') }}"> Les affectations </a></li>
+                <li>     <a href="{{ path('CreerChefChantier') }}"> Les chefs de chantier </a></li> 
+                   
+            </ul>
+                
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                    
+
+                <li><a href="{{ path('Deconnexion') }}"><span class="glyphicon glyphicon-log-in"></span> Déconnexion</a></li>
+            </ul>
+
+        </div>
+
+    </nav>

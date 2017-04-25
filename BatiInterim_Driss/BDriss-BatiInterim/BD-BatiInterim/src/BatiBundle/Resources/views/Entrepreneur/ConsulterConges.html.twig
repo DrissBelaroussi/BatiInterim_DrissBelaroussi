@@ -1,0 +1,123 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+        {% if gestionnaire is defined %}
+            {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+
+        {% else%}
+            {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+
+        {% endif%}
+
+        {#{{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}#}
+
+        <div class="contentTab">
+            <div class ='tabGauche'>
+                <h4>Jours de congé acceptés</h4>
+                {% if congesAcc is defined %}
+                    <table class='table table-bordered'>  
+                        <tr>
+                            <th>Date de début</th>
+                            <th>Date de fin </th>
+                        </tr>
+
+                        {% for unConge in congesAcc %}
+                            <tr>
+
+                                <td>{{ unConge.datedebut | date('d-m-Y') }}</td>
+                                <td>{{ unConge.datefin | date('d-m-Y') }}</td>
+
+
+                            </tr>
+                        {% endfor %}
+
+
+                    </table>
+
+                {% endif%}
+            </div>
+            <div class ='tabDroite'>
+
+                <h4>Jours de congé en attente</h4>
+
+                {% if congesAtt is defined %}
+                    <table class='table table-bordered'>  
+                        <tr>
+                            <th>Date de début</th>
+                            <th> Date de fin </th>
+                        </tr>
+
+                        {% for unConge in congesAtt %}
+                            <tr>
+
+                                <td>{{ unConge.datedebut | date('d-m-Y') }}</td>
+                                <td>{{ unConge.datefin | date('d-m-Y') }}</td>
+                                {% if gestionnaire is defined %}
+
+                                    <td>
+                                        <form class ="formConnexion" action="{{ path('AccepterConge') }}" method="POST">
+                                            <input  type="submit" value="Accepter" />
+                                            <input type="hidden" name="idConge" value="{{unConge.id}}">                       
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form class ="formConnexion" action="{{ path('RefuserConge') }}" method="POST">
+                                            <input  type="submit" value="Refuser" />
+                                            <input type="hidden" name="idConge" value="{{unConge.id}}">   
+                                            <input type="hidden" name="idArtisan" value="{{unConge.idartisan.id}}">    
+                                        </form>
+                                    </td>
+
+                                {% endif%}
+
+                            </tr>
+                        {% endfor %}
+
+
+                    </table>
+
+                {% endif%}
+            </div>
+        </div>
+
+        <div class="retour2tab ">
+            <table class="tableBoutons" > 
+                <tr>
+                    <td>
+
+                        {% if gestionnaire is defined %}
+
+
+                            <form  class ="formConnexion" action="{{ path('AfficherArtisans') }}" method="post">
+                                <input type="submit" class="btn btn-default" value="Retour" />
+                            </form>
+                        {% else%}
+
+                            <form  class ="formConnexion" action="{{ path('GererArtisans') }}" method="post">
+                                <input type="submit" class="btn btn-default" value="Retour" />
+                            </form>
+
+                        {% endif%}
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bati-Interim</title>
+        
+        
+         
+       {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+{% endstylesheets %}
+ 
+</head>
+<body>
+    
+    {{ include("BatiBundle:Template:Menu.html.twig") }}
+
+ {% if form is defined %}
+            {# {{form(formCreerA)}}#}
+            <h3>Authentification </h3>
+            {{form_start(form)}}
+
+            <table class="tableForm">
+                <tr>
+                    <td>{{form_label(form.loging)}}</td>      
+                    <td>{{form_widget(form.loging)}}</td>
+                    <td>{{form_errors(form.loging)}}</td>
+                </tr> 
+                <tr>
+                    <td>{{form_label(form.mdpg)}}</td>
+                    <td>{{form_widget(form.mdpg)}}</td>
+                    <td>{{form_errors(form.mdpg)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.profil)}}</td>
+                    <td>{{form_widget(form.profil)}}</td>
+                    <td>{{form_errors(form.profil)}}</td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td>{{form_row(form.Valider)}}</td>
+                    <td class="tdAnnuler">{{form_row(form.Annuler)}}</td>
+                </tr>
+
+
+            </table>
+                
+                {{ form_rest(form) }}
+                {{form_end(form)}}
+                {{ form_widget(form._token) }}
+                
+         
+ {%endif%}
+ 
+ {% if message is defined %}
+     <div class="alert alert-danger" style="width:50%;margin:auto;">{{message}}</div>
+{% endif %}
+
+
+
+</body>
+
+
+<footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>
+</html>
+

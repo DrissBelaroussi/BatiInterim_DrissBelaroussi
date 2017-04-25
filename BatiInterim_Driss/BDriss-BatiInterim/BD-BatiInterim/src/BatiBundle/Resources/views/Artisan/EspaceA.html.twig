@@ -1,0 +1,70 @@
+{# empty Twig template #}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuA.html.twig") }}
+        
+        {#<h3>Module Artisan</h3>
+        <h4>Mon espace personnel</h4>
+       
+
+        <table class='tableBoutons'>
+            <tr>
+                <td>
+                    <form class ="formConnexion" action="{{ path('ConsulterMesConges') }}" method="post">
+                        <input  type="submit"  class="btn btn-inverse" value="Consulter mes congés" />
+                    </form>   
+
+                </td>
+                <td>
+                    <form class ="formConnexion" action="{{ path('ConsulterMissions') }}" method="post">
+                        <input  type="submit" class="btn btn-inverse" value="Consulter mes missions" />
+                    </form>
+
+                </td>
+                <td>
+                    <form class ="formConnexion" action="{{ path('ModifierCoordonnees') }}" method="post">
+                        <input  type="submit"  class="btn btn-inverse" value="Modifier mes coordonnées" />
+                    </form>
+
+                </td>
+            </tr>#}
+        
+         <div class="container">
+            <h2>Espace Artisan</h2>
+            <p>Vous êtes sur la plateforme dédiée aux artisans.</p>
+            <p class="lead"> Si vous n'êtes pas autorisé à accéder à cette plateforme</p>
+            <p>Veuillez-vous déconnecter.</p>
+        </div>
+
+
+
+        </table>
+
+
+
+
+
+
+{#
+        <form class ="formConnexion" action="{{ path('Deconnexion') }}" method="post">
+            <input  type="submit" class="btn btn-default" value="Déconnexion" />
+        </form>#}
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>
+
+
+

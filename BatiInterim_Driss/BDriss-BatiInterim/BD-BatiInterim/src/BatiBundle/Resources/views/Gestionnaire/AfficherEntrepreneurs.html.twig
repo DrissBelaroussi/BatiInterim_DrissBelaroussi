@@ -1,0 +1,61 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+
+
+
+        {% if lesEntrepreneurs is defined %}
+            <table class='table table-bordered'>  
+                <tr>
+                    <th>Nom de societé</th>
+                    <th>Nom du responsable</th>
+                    <th>Prénom du responsable</th>
+                </tr>
+                {% for unEntrepreneur in lesEntrepreneurs %}
+
+
+                    <tr>
+                        <td>{{unEntrepreneur.nomsociete}}</td>
+                        <td>{{unEntrepreneur.nomchef}}</td>
+                        <td>{{unEntrepreneur.prenomchef}}</td>
+                        
+
+                        <td>
+                            <form class ="formConnexion" action="{{ path('ModifierEntrepreneur') }}" method="GET">
+                                <input  type="submit" class="btn btn-inverse" value="Modifier" />
+                                <input type="hidden" name="idEntrepreneur" value="{{unEntrepreneur.id}}">                       
+                            </form>
+                        </td>
+                        
+                        <td>
+                            <form class ="formConnexion" action="{{ path('SupprimerEntrepreneur') }}" method="GET">
+                                <input  type="submit" class="btn btn-danger" value="Supprimer" />
+                                <input type="hidden" name="idEntrepreneur" value="{{unEntrepreneur.id}}">                       
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif%}
+
+
+        {#<div class="tableBoutons">
+            <form  class ="formConnexion" action="{{ path('GestionEntrepreneur') }}" method="post">
+                <input type="submit"  class="btn btn-default" value="Retour" />
+            </form>
+        </div>#}
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

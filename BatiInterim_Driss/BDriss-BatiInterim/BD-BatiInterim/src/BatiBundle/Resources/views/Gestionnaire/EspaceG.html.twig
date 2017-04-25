@@ -1,0 +1,92 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+
+
+
+    </head>
+    <body>
+
+        {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+
+
+        {% if form is defined %}
+            Pour la sécurité de votre compte, veuillez changer de mot de passe. 
+            {{form(form)}}
+        {%endif%}
+
+        {% if Gestionnaire is defined %}
+            Bienvenue 
+            {{Gestionnaire.prenomg}}
+            {{Gestionnaire.nomg}}  
+        {%endif%}
+
+
+        {#<table class="tableBoutons">
+            <tr>
+                <td>
+                    <form class ="formConnexion" action="{{ path('GestionArtisan') }}" method="post">
+                        <input  type="submit" class="btn btn-inverse" value="Gérer les artisans" />
+                    </form>
+                </td>
+                <td>
+                    <form  class ="formConnexion" action="{{ path('GestionEntrepreneur') }}" method="post">
+                        <input type="submit" class="btn btn-inverse" value="Gérer les entrepreneurs" />
+                    </form>
+                </td>
+
+            </tr>
+        </table>#}
+
+        <div class="container">
+            <h2>Espace Gestionnaire</h2>
+            <p>Vous êtes sur la plateforme dédiée au gestionnaire.</p>
+            <p class="lead"> Si vous n'êtes pas autorisé à accéder à cette plateforme</p>
+            <p>Veuillez-vous déconnecter.</p>
+        </div>
+
+
+
+
+
+        {% if message is defined %}      
+            {{message}}
+        {%endif%}
+
+
+
+
+
+        {% if artisan is defined %}
+            Artisan : 
+            {{artisan.nom}}
+            {{artisan.prenom}} 
+
+        {%endif%}
+
+        {% if entrepreneur is defined %}
+            Entrepreneur : 
+            {{entrepreneur.nomsociete}}
+            {{entrepreneur.nomchef}}
+            {{entrepreneur.prenomchef}} 
+
+        {%endif%}
+
+        {# <form class ="formConnexion" action="{{ path('Deconnexion') }}" method="post">
+             <input  type="submit" class="btn btn-default" value="Déconnexion" />
+         </form>#}
+
+    </body>
+
+    <footer>
+        {{ include("BatiBundle:Template:Footer.html.twig") }}
+    </footer>
+
+
+

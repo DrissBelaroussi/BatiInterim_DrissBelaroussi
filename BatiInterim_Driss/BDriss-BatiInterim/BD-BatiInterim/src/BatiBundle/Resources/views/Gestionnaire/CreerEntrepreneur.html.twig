@@ -1,0 +1,90 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bati-Interim</title>
+        
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+</head>
+<body>
+     {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+{% if formCreerE is defined %}
+  
+  
+   <h3>Création d'un nouvel entrepreneur </h3>
+   
+          {{form_start(formCreerE)}}
+
+            <table class="tableForm">
+                <tr>
+                    <td>{{form_label(formCreerE.nomsociete)}}</td>      
+                    <td>{{form_widget(formCreerE.nomsociete)}}</td>
+                    <td>{{form_errors(formCreerE.nomsociete)}}</td>
+                </tr> 
+                <tr>
+                    <td>{{form_label(formCreerE.nomchef)}}</td>
+                    <td>{{form_widget(formCreerE.nomchef)}}</td>
+                    <td>{{form_errors(formCreerE.nomchef)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerE.prenomchef)}}</td>
+                    <td>{{form_widget(formCreerE.prenomchef)}}</td>
+                    <td>{{form_errors(formCreerE.prenomchef)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerE.telephonesociete)}}</td>
+                    <td>{{form_widget(formCreerE.telephonesociete)}}</td>
+                    <td>{{form_errors(formCreerE.telephonesociete)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerE.adressesociete)}}</td>
+                    <td>{{form_widget(formCreerE.adressesociete)}}</td>
+                    <td>{{form_errors(formCreerE.adressesociete)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerE.cpsociete)}}</td>
+                    <td>{{form_widget(formCreerE.cpsociete)}}</td>
+                    <td>{{form_errors(formCreerE.cpsociete)}}</td>
+
+                </tr>
+
+                <tr>
+                    <td>{{form_label(formCreerE.ville)}}</td>
+                    <td>{{form_widget(formCreerE.ville)}}</td>
+                    <td>{{form_errors(formCreerE.ville)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerE.idsecteur)}}</td>
+                    <td>{{form_widget(formCreerE.idsecteur)}}</td>
+                    <td>{{form_errors(formCreerE.idsecteur)}}</td>
+
+                </tr>
+               
+                <tr>
+                    <td>{{form_row(formCreerE.Valider)}}</td>
+                    <td class="tdAnnuler">{{form_row(formCreerE.Annuler)}}</td>
+                </tr>
+
+
+            </table>
+                {{ form_rest(formCreerE) }}
+                {{form_end(formCreerE)}}
+{%endif%}
+
+
+ {#<form  class ="formConnexion" action="{{ path('GestionEntrepreneur') }}" method="post">
+                <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+
+</body>
+
+<footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

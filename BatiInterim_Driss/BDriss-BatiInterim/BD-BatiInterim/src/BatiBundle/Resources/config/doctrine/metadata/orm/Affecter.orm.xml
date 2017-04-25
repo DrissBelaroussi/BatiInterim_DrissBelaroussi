@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Affecter" table="affecter">
+    <indexes>
+      <index name="FK_Affecter_idArtisan" columns="idArtisan"/>
+      <index name="FK_Affecter_idMission" columns="idMission"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="etataffectation" type="string" column="etatAffectation" length="1" nullable="false"/>
+    <many-to-one field="idmission" target-entity="Mission">
+      <join-columns>
+        <join-column name="idMission" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idartisan" target-entity="Artisan">
+      <join-columns>
+        <join-column name="idArtisan" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

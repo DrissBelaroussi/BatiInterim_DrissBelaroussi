@@ -1,0 +1,227 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+        
+         {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+        <div class="containeur">
+           
+
+           {# {% if form is defined %}
+                {{form(form)}}
+            {%endif%}#}
+           
+           {% if form is defined %}
+            {# {{form(formCreerA)}}#}
+            <h3> Création d'une nouvelle mission </h3>
+            {{form_start(form)}}
+
+            <table class="tableForm">
+
+                <tr>
+                    <td>{{form_label(form.intitule)}}</td>
+                    <td>{{form_widget(form.intitule)}}</td>
+                    <td>{{form_errors(form.intitule)}}</td>
+
+                </tr>
+
+                <tr>
+                    <td>{{form_label(form.datedebut)}}</td>
+                    <td>{{form_widget(form.datedebut)}}</td>
+                    <td>{{form_errors(form.datedebut)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.datefin)}}</td>
+                    <td>{{form_widget(form.datefin)}}</td>
+                    <td>{{form_errors(form.datefin)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.prixjournalier)}}</td>
+                    <td>{{form_widget(form.prixjournalier)}}</td>
+                    <td>{{form_errors(form.prixjournalier)}}</td>
+
+                <tr>
+                    
+                    <td>{{form_label(form.nbartisans)}}</td>
+                    <td>{{form_widget(form.nbartisans)}}</td>
+                    <td>{{form_errors(form.nbartisans)}}</td>
+
+                </tr>
+                    
+                    
+                    <tr>
+                    <td>{{form_label(form.idcorpsmetier)}}</td>
+                    <td>{{form_widget(form.idcorpsmetier)}}</td>
+                    <td>{{form_errors(form.idcorpsmetier)}}</td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{form_row(form.valider)}}</td>
+                   {# <td class="tdAnnuler">{{form_row(form.annuler)}}</td>#}
+                </tr>
+
+
+            </table>
+
+            {{ form_rest(form) }}
+            {{form_end(form)}}
+
+
+        {%endif%}
+
+
+            {% if message is defined %}
+                {% if message != false %}
+                    <div class="alert alert-danger" style="width:50%;margin:auto;">{{message}}</div>
+                {%endif%}
+            {%endif%}
+            
+            
+            <div class="tabGauche">
+                
+                 <h3> Chefs de chantier disponibles </h3>
+                <div class="divTableScroll">
+                    {% if chefs is defined %}
+                        <table class="table table-bordered">  
+                            <tr>
+                                <th>Numero</th> 
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Ville</th>
+                                <th>Téléphone</th>
+                            </tr>                   
+                            {% for unChef in chefs %}
+                                <tr>
+                                    <td>{{unChef.id }}</td>
+                                    <td>{{unChef.nom }}</td>
+                                    <td>{{unChef.prenom }}</td>
+                                    <td>{{unChef.ville}}</td>
+                                    <td>{{unChef.telephone}}</td>
+                                    <td>
+                                        <form class ="formConnexion" action="{{ path('AffecterChef') }}" method="POST">
+                                            <input  type="submit" value="Affecter" />
+                                            <input type="hidden" name="idChef" value="{{unChef.id }}">  
+                                            <input type="hidden" name="idChantier" value="{{idChantier}}">  
+                                        </form>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        </table>
+                    {% else %} 
+
+                        <form class ="formConnexion" action="{{ path('CreerChefChantier') }}" method="GET">
+                            <input  type="submit" value="Renseigner un chef de chantier" />                   
+                        </form>
+                    {%endif%}
+                </div>
+            </div>
+
+
+
+
+            {% if chefsAffect is defined %}
+                <div class="tabDroite">
+                      <h3> Chefs de chantier affectés </h3>
+                    <div class="divTableScroll">
+                        <table class="table table-bordered">  
+                            <tr>
+                                <th>Numero</th> 
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Ville</th>
+                                <th>Téléphone</th>
+                            </tr>                   
+                            {% for unChef in chefsAffect %}
+                                <tr>
+                                    <td>{{unChef.idchef.id }}</td>
+                                    <td>{{unChef.idchef.nom }}</td>
+                                    <td>{{unChef.idchef.prenom }}</td>
+                                    <td>{{unChef.idchef.ville}}</td>
+                                    <td>{{unChef.idchef.telephone}}</td>
+                                    <td>
+                                        <form class ="formConnexion" action="{{ path('RadierChef') }}" method="POST">
+                                            <input  type="submit" value="Radier" />
+                                            <input type="hidden" name="idAffect" value="{{unChef.id}}">  
+
+                                        </form>
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        </table>
+                    </div>
+                </div>
+
+
+
+                {% if missions is defined %}
+                    
+                    <h3> Liste de vos missions pour ce chantier </h3>
+                    <table class="table table-bordered">  
+                        <tr>
+                            <th>Intitulé</th> 
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Prix journalier</th>
+                            <th> Nombre d'artisans</th>
+
+                        </tr>
+                        {% for uneMission in missions %}
+
+
+                            <tr>
+                                <td>{{uneMission.intitule}}</td>
+                                <td>{{uneMission.datedebut | date('d-m-Y')}}</td>
+                                <td>{{uneMission.datefin | date('d-m-Y')}}</td>
+                                <td>{{uneMission.prixjournalier}}</td>
+                                <td>{{uneMission.nbartisans}}</td>
+
+                                <td>
+                                    <form class ="formConnexion" action="{{ path('AffecterArtisans') }}" method="POST">
+                                        <input  type="submit" value="Affecter des artisans" />
+                                        <input type="hidden" name="idMission" value="{{uneMission.id}}">  
+                                        <input type="hidden" name="idChantier" value="{{idChantier}}">  
+                                    </form>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+
+
+
+
+                {%endif%}
+            {%endif%}
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </body>
+
+    <footer>
+       
+           {#  {{ include("BatiBundle:Template:Footer.html.twig") }}#}
+        
+   
+</footer>
+    
+    
+

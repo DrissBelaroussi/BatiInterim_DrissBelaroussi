@@ -1,0 +1,98 @@
+<?php
+
+namespace BatiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entrepreneur
+ *
+ * @ORM\Table(name="entrepreneur", uniqueConstraints={@ORM\UniqueConstraint(name="login", columns={"login"})}, indexes={@ORM\Index(name="FK_Entrepreneur_idSecteur", columns={"idSecteur"})})
+ * @ORM\Entity(repositoryClass="BatiBundle\Entity\EntrepreneurRepository")
+ */
+class Entrepreneur
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomSociete", type="string", length=25, nullable=false)
+     */
+    private $nomsociete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomChef", type="string", length=25, nullable=false)
+     */
+    private $nomchef;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomChef", type="string", length=25, nullable=false)
+     */
+    private $prenomchef;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephoneSociete", type="string", length=25, nullable=false)
+     */
+    private $telephonesociete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseSociete", type="string", length=50, nullable=false)
+     */
+    private $adressesociete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cpSociete", type="string", length=5, nullable=false)
+     */
+    private $cpsociete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=50, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=50, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=50, nullable=false)
+     */
+    private $mdp;
+
+    /**
+     * @var \Secteur
+     *
+     * @ORM\ManyToOne(targetEntity="Secteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idSecteur", referencedColumnName="id")
+     * })
+     */
+    private $idsecteur;
+
+
+}

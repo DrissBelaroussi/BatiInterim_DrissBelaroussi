@@ -1,0 +1,97 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+             {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+
+        {% if formCreerA is defined %}
+            {# {{form(formCreerA)}}#}
+            <h3>Création d'un nouvel artisan </h3>
+            {{form_start(formCreerA)}}
+
+            <table class="tableForm">
+                <tr>
+                    <td>{{form_label(formCreerA.nom)}}</td>      
+                    <td>{{form_widget(formCreerA.nom)}}</td>
+                    <td>{{form_errors(formCreerA.nom)}}</td>
+                </tr> 
+                <tr>
+                    <td>{{form_label(formCreerA.prenom)}}</td>
+                    <td>{{form_widget(formCreerA.prenom)}}</td>
+                    <td>{{form_errors(formCreerA.prenom)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.datenaiss)}}</td>
+                    <td>{{form_widget(formCreerA.datenaiss)}}</td>
+                    <td>{{form_errors(formCreerA.datenaiss)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.lieunaiss)}}</td>
+                    <td>{{form_widget(formCreerA.lieunaiss)}}</td>
+                    <td>{{form_errors(formCreerA.lieunaiss)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.telephone)}}</td>
+                    <td>{{form_widget(formCreerA.telephone)}}</td>
+                    <td>{{form_errors(formCreerA.telephone)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.adresse)}}</td>
+                    <td>{{form_widget(formCreerA.adresse)}}</td>
+                    <td>{{form_errors(formCreerA.adresse)}}</td>
+
+                </tr>
+
+                <tr>
+                    <td>{{form_label(formCreerA.cp)}}</td>
+                    <td>{{form_widget(formCreerA.cp)}}</td>
+                    <td>{{form_errors(formCreerA.cp)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.ville)}}</td>
+                    <td>{{form_widget(formCreerA.ville)}}</td>
+                    <td>{{form_errors(formCreerA.ville)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(formCreerA.idcorpsmetier)}}</td>
+                    <td>{{form_widget(formCreerA.idcorpsmetier)}}</td>
+                    <td>{{form_errors(formCreerA.idcorpsmetier)}}</td>
+
+                <tr>
+                <tr>
+                    <td>{{form_row(formCreerA.Valider)}}</td>
+                    <td class="tdAnnuler">{{form_row(formCreerA.Annuler)}}</td>
+                </tr>
+
+
+            </table>
+                
+                {{ form_rest(formCreerA) }}
+                {{form_end(formCreerA)}}
+
+
+        {%endif%}
+
+
+       {# <form  class ="formConnexion" action="{{ path('GestionArtisan') }}" method="post">
+            <input type="submit" class="btn btn-default" value="Retour" />
+        </form>#}
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

@@ -1,0 +1,42 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuG.html.twig") }}
+        Gestion Entrepreneur
+
+        <table class="tableBoutons">
+            <tr>
+                <td>
+                    <form class ="formConnexion" action="{{ path('CreerEntrepreneur') }}" method="post">
+                        <input  type="submit" class="btn btn-inverse" value="Créer un entrepreneur" />
+                    </form>
+                </td>
+
+                <td>
+                    <form class ="formConnexion" action="{{ path('AfficherEntrepreneurs') }}" method="post">
+                        <input  type="submit"  class="btn btn-inverse" value="Afficher les entrepreneurs" />
+                    </form>
+                </td>
+
+
+            </tr>
+        </table>
+
+       {# <form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+            <input type="submit" class="btn btn-default" value="Retour" /> 
+        </form>#}
+
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

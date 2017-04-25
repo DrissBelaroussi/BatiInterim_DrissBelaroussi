@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Gestionnaire" table="gestionnaire">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="loging" type="string" column="loginG" length="25" nullable="false"/>
+    <field name="mdpg" type="string" column="mdpG" length="50" nullable="false"/>
+    <field name="nomg" type="string" column="nomG" length="25" nullable="false"/>
+    <field name="prenomg" type="string" column="prenomG" length="25" nullable="false"/>
+  </entity>
+</doctrine-mapping>

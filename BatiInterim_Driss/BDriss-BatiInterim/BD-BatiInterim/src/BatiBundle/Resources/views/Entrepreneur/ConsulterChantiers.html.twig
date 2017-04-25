@@ -1,0 +1,29 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bati-Interim</title>
+        
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+</head>
+<body>
+     {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+<form class ="formConnexion" action="{{ path('CreerMission') }}" method="post">
+    <input  type="submit" value="Créer une mission" />
+</form>
+    
+<form class ="formConnexion" action="{{ path('ConsulterMissions') }}" method="post">
+    <input  type="submit" value="Consulter les missions" />
+</form>
+    
+    {# <form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+                <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+    
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

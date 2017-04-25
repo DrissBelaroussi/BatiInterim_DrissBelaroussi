@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Entrepreneur" table="entrepreneur">
+    <indexes>
+      <index name="FK_Entrepreneur_idSecteur" columns="idSecteur"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="login" columns="login"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomsociete" type="string" column="nomSociete" length="25" nullable="false"/>
+    <field name="nomchef" type="string" column="nomChef" length="25" nullable="false"/>
+    <field name="prenomchef" type="string" column="prenomChef" length="25" nullable="false"/>
+    <field name="telephonesociete" type="string" column="telephoneSociete" length="25" nullable="false"/>
+    <field name="adressesociete" type="string" column="adresseSociete" length="50" nullable="false"/>
+    <field name="cpsociete" type="string" column="cpSociete" length="5" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="50" nullable="false"/>
+    <field name="login" type="string" column="login" length="50" nullable="false"/>
+    <field name="mdp" type="string" column="mdp" length="50" nullable="false"/>
+    <many-to-one field="idsecteur" target-entity="Secteur">
+      <join-columns>
+        <join-column name="idSecteur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,105 @@
+<?php
+
+namespace BatiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Artisan
+ *
+ * @ORM\Table(name="artisan", indexes={@ORM\Index(name="FK_Artisan_idCorpsMetier", columns={"idCorpsMetier"})})
+ * @ORM\Entity(repositoryClass="BatiBundle\Entity\ArtisanRepository")
+ */
+class Artisan
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=25, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=25, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateNaiss", type="date", nullable=false)
+     */
+    private $datenaiss;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieuNaiss", type="string", length=50, nullable=false)
+     */
+    private $lieunaiss;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=25, nullable=false)
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=50, nullable=false)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cp", type="string", length=5, nullable=false)
+     */
+    private $cp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=50, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=25, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=50, nullable=false)
+     */
+    private $mdp;
+
+    /**
+     * @var \Corpsmetier
+     *
+     * @ORM\ManyToOne(targetEntity="Corpsmetier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCorpsMetier", referencedColumnName="id")
+     * })
+     */
+    private $idcorpsmetier;
+
+
+}

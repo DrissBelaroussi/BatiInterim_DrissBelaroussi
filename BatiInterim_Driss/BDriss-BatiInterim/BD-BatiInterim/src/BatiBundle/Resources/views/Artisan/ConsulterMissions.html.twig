@@ -1,0 +1,100 @@
+{# empty Twig template #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>   
+         {{ include("BatiBundle:Template:ConnectedMenuA.html.twig") }}
+
+        {% if message is defined %}
+        </h3>{{message}}</h3>
+    {%endif%}
+
+
+
+
+
+{% if affectAtt is defined %}
+    <h3> Missions en Attente</h3>
+    <table class='table table-bordered'>  
+        <tr>     
+            <th> Chantier </th>
+            <th> Libellé </th>
+            <th> Lieu </th>  
+            <th> Prix journalier </th>                     
+            <th> Date de début </th>
+            <th> Date de fin </th>            
+        </tr>
+        {% for uneAffect in affectAtt %}
+            <tr>     
+                <td>{{ uneAffect.idmission.idchantier.libelle}}</td>
+                <td>{{ uneAffect.idmission.intitule}}</td>
+                <td>{{ uneAffect.idmission.idchantier.lieu}}</td>
+                <td>{{ uneAffect.idmission.prixjournalier}} €</td>
+                <td>{{ uneAffect.idmission.datedebut | date('d-m-Y') }}</td>
+                <td>{{ uneAffect.idmission.datefin | date('d-m-Y') }}</td>  
+                <td>
+                    <form class ="formConnexion" action="{{ path('ConsulterMissions') }}" method="POST">
+                        <input  type="submit" value="Accepter" />
+                        <input type="hidden" name="idAffectAcc" value="{{uneAffect.id}}">                       
+                    </form>
+                </td>
+                <td>
+                    <form class ="formConnexion" action="{{ path('ConsulterMissions') }}" method="POST">
+                        <input  type="submit" value="Refuser" />
+                        <input type="hidden" name="idAffectRef" value="{{uneAffect.id}}">                       
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif%}
+
+
+
+
+
+
+{% if affectAcc is defined %}
+    <table class='table table-bordered'>  
+        <h3> Missions acceptées</h3>
+
+        <tr>     
+            <th> Chantier </th>
+            <th> Libellé </th>
+            <th> Lieu </th>  
+            <th> Prix journalier </th>                     
+            <th> Date de début </th>
+            <th> Date de fin </th>            
+        </tr>
+        {% for uneAffect in affectAcc %}
+            <tr>            
+            <tr>     
+                <td>{{ uneAffect.idmission.idchantier.libelle}}</td>
+                <td>{{ uneAffect.idmission.intitule}}</td>
+                <td>{{ uneAffect.idmission.idchantier.lieu}}</td>
+                <td>{{ uneAffect.idmission.prixjournalier}} €</td>
+                <td>{{ uneAffect.idmission.datedebut | date('d-m-Y') }}</td>
+                <td>{{ uneAffect.idmission.datefin | date('d-m-Y') }}</td>  
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endif%}
+
+</form>
+{#<form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+    <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+</body>
+
+<footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>
+

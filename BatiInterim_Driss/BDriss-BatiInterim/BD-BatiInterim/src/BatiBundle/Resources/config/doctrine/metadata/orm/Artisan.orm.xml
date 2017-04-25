@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Artisan" table="artisan">
+    <indexes>
+      <index name="FK_Artisan_idCorpsMetier" columns="idCorpsMetier"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="25" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="25" nullable="false"/>
+    <field name="datenaiss" type="date" column="dateNaiss" nullable="false"/>
+    <field name="lieunaiss" type="string" column="lieuNaiss" length="50" nullable="false"/>
+    <field name="telephone" type="string" column="telephone" length="25" nullable="false"/>
+    <field name="adresse" type="string" column="adresse" length="50" nullable="false"/>
+    <field name="cp" type="string" column="cp" length="5" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="50" nullable="false"/>
+    <field name="login" type="string" column="login" length="25" nullable="false"/>
+    <field name="mdp" type="string" column="mdp" length="50" nullable="false"/>
+    <many-to-one field="idcorpsmetier" target-entity="Corpsmetier">
+      <join-columns>
+        <join-column name="idCorpsMetier" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

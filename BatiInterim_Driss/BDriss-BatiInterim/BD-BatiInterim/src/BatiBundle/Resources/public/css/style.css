@@ -1,0 +1,118 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9 avr. 2017, 20:56:12
+    Author     : eleve
+*/
+
+body{
+    text-align : center ;
+    background-color: white ;
+   
+   
+    
+     
+}
+
+.tdAnnuler{
+    text-align : left ; 
+}
+
+
+
+.table {
+    width : 90% !important; 
+    margin : auto ; 
+    margin-top : 20px ;
+    //background-color: #5e9cd2 ;
+    background-color: #d9edf7	 ;
+    //color : white ; 
+    //font-weight: bold ; 
+    font-size: medium ;
+     
+    
+    
+    
+    
+}
+
+.divTableScroll {
+    height : 200px ;
+    overflow:auto;
+}
+
+.tableForm{
+     margin: auto  ; 
+     text-align : right ; 
+}
+
+.tabDroite{
+    float : left ; 
+     width: 50% ; 
+}
+.tabGauche {
+   float : left ; 
+     width: 50% ; 
+}
+
+.divDroite{
+    float : left ; 
+     width: 30% ; 
+}
+
+.divGauche {
+   float : left ; 
+     width: 30% ; 
+}
+
+.contentTab{
+  //  position : absolute ;
+  width : 100% ;
+  display : inline-block;
+}
+
+.retour2tab{
+/*   position : relative ; 
+   padding-top : 200px ; */
+ 
+}
+
+
+
+
+
+.btn{
+    //background-color: #375D81  ;
+    //color: white ; 
+   height : 40px ; 
+   //width : 150px ; 
+   
+}
+
+
+.tableBoutons{
+    margin: auto  ; 
+    margin-top : 10px ; 
+    
+}
+
+td{
+    padding:5px;
+    
+}
+
+th {
+    text-align: center ;
+}
+
+
+
+input{
+    padding : 5px ; 
+}
+
+
+

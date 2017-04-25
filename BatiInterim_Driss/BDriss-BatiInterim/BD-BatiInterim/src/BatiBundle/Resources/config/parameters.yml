@@ -1,0 +1,11 @@
+## YAML Template.
+---
+parameters:
+    pdo.class : PDO
+    pdo.attr_errmode: 3
+    pdo.errmode_exception: 2
+    pdo.options:
+        %pdo.attr_errmode%: %pdo.errmode_exception%
+    dbService.dsn: mysql:host=localhost;dbname=batiInterim
+    dbService.username: root
+    dbService.password: mysql

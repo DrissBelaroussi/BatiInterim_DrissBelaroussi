@@ -1,0 +1,103 @@
+{# empty Twig template #}
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+        <h3>  Affectation des artisans <h3>
+
+        {% if artisans is defined %}
+            <h4>  Artisans disponibles  <h4>
+            <table class='table table-bordered'>  
+
+
+                <tr>
+                    <th>Nom</th> 
+                    <th>Prénom</th>
+                    <th>Date de naissance</th> 
+                    <th>Ville</th>                     
+                    <th>N° de téléphone</th>
+
+
+                </tr>
+
+                {% for unArtisan in artisans %}
+                    <tr>
+                        <td>{{unArtisan.nom}}</td>
+                        <td>{{unArtisan.prenom}}</td>
+                        <td>{{unArtisan.datenaiss | date('d-m-Y')}}</td>
+                        <td>{{unArtisan.ville}}</td> 
+                        <td>{{unArtisan.telephone}}</td>
+                        <td>
+                            <form class ="formConnexion" action="{{ path('AffecterArtisans') }}" method="POST">
+                                <input  type="submit" value="Affecter" />
+                                <input type="hidden" name="idArtisan" value="{{unArtisan.id}}"> 
+                                {% if idMission is defined %}
+                                    <input type="hidden" name="idMission" value="{{idMission}}">  
+                                {% endif%}
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% endif%}
+
+        {% if artisansAffect is defined %}
+            <h4>  Artisans affectés  <h4>
+            <table class='table table-bordered'>  
+
+
+                <tr>
+                    <th>Nom</th> 
+                    <th>Prénom</th>
+                    <th>Date de naissance</th> 
+                    <th>Ville</th>                     
+                    <th>N° de téléphone</th>
+
+
+                </tr>
+
+                {% for unArtisan in artisansAffect %}
+                    <tr>
+                        <td>{{unArtisan.idartisan.nom}}</td>
+                        <td>{{unArtisan.idartisan.prenom}}</td>
+                        <td>{{unArtisan.idartisan.datenaiss | date('d-m-Y')}}</td>
+                        <td>{{unArtisan.idartisan.ville}}</td> 
+                        <td>{{unArtisan.idartisan.telephone}}</td>
+                        <td>
+                            <form class ="formConnexion" action="{{ path('EcarterArtisan') }}" method="POST">
+                                <input  type="submit" value="Ecarter" />
+                                <input type="hidden" name="idArtisan" value="{{unArtisan.idartisan.id}}"> 
+                                <input type="hidden" name="idAffect" value="{{unArtisan.id}}"> 
+                                {% if idMission is defined %}
+                                    <input type="hidden" name="idMission" value="{{idMission}}">  
+                                {% endif%}
+                            </form>
+                        </td>
+                        <td>
+                            {{unArtisan.id}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% endif%}
+
+        {#<form  class ="formConnexion" action="{{ path('CreerChantier') }}" method="post">
+            <input type="submit" class="btn btn-default" value="Retour" />
+        </form>#}
+
+
+
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

@@ -1,0 +1,110 @@
+{# empty Twig template #}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+        <div class="containeur">
+            <h3>  </h3>
+
+           {# {% if form is defined %}
+                {{form(form)}}
+            {%endif%}#}
+            
+            
+             {% if form is defined %}
+            {# {{form(formCreerA)}}#}
+            <h3> Choisir un critère de recherche </h3>
+            {{form_start(form)}}
+
+            <table class="tableForm">
+
+                 <tr>
+                    <td>{{form_label(form.chantier)}}</td>
+                    <td>{{form_widget(form.chantier)}}</td>
+                    <td>{{form_errors(form.chantier)}}</td>
+
+                </tr>
+                
+                <tr>
+                    <td>{{form_label(form.artisan)}}</td>
+                    <td>{{form_widget(form.artisan)}}</td>
+                    <td>{{form_errors(form.artisan)}}</td>
+
+                </tr>
+
+               
+                <tr>
+                    <td>{{form_label(form.date)}}</td>
+                    <td>{{form_widget(form.date)}}</td>
+                    <td>{{form_errors(form.date)}}</td>
+
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td>{{form_row(form.Valider)}}</td>
+                  {# <td class="tdAnnuler">{{form_row(form.annuler)}}</td>#}
+                </tr>
+
+
+            </table>
+
+            {{ form_rest(form) }}
+            {{form_end(form)}}
+
+
+        {%endif%}
+
+
+            {% if affect is defined %}  
+                 <table class="table table-bordered">  
+                 <tr>
+                            <th>Chantier</th> 
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Nom de l'artisan</th>
+                            <th>Prénom de l'artisan</th>
+                            <th>Lieu de la mission</th>
+                            <th>Prix journalier</th>
+                </tr>
+               
+                    {% for uneAffect in affect %}
+
+                       
+                        <tr>
+                            <td>{{uneAffect.idmission.idchantier.libelle}}</td>
+                            <td>{{uneAffect.idmission.datedebut | date('d-m-Y')}}</td>
+                            <td>{{uneAffect.idmission.datefin | date('d-m-Y')}}</td>  
+                            <td>{{uneAffect.idartisan.nom}}</td>
+                            <td>{{uneAffect.idartisan.prenom}}</td>
+                            <td>{{uneAffect.idmission.idchantier.lieu}}</td>                                                    
+                            <td>{{uneAffect.idmission.prixjournalier}} € </td>
+
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            {% endif%}
+
+        </div>
+            
+            {# <form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+                <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+
+    </body>
+    
+    <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

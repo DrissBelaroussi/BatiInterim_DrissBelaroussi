@@ -1,0 +1,53 @@
+<?php
+
+namespace BatiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Gestionnaire
+ *
+ * @ORM\Table(name="gestionnaire")
+ * @ORM\Entity(repositoryClass="BatiBundle\Entity\GestionnaireRepository")
+ */
+class Gestionnaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="loginG", type="string", length=25, nullable=false)
+     */
+    private $loging;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdpG", type="string", length=50, nullable=false)
+     */
+    private $mdpg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomG", type="string", length=25, nullable=false)
+     */
+    private $nomg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomG", type="string", length=25, nullable=false)
+     */
+    private $prenomg;
+
+
+}

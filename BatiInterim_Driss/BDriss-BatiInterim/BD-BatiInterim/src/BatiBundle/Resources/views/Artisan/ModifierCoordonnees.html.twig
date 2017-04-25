@@ -1,0 +1,117 @@
+{# empty Twig template #}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuA.html.twig") }}
+
+
+        {% if form is defined %}
+            {{form_start(form)}}
+             <h3>Modification de mes informations personnelles </h3>
+
+            <table class="tableForm">
+                <tr>
+                    <td>{{form_label(form.nom)}}</td>      
+                    <td>{{form_widget(form.nom)}}</td>
+                    <td>{{form_errors(form.nom)}}</td>
+                </tr> 
+                <tr>
+                    <td>{{form_label(form.prenom)}}</td>
+                    <td>{{form_widget(form.prenom)}}</td>
+                    <td>{{form_errors(form.prenom)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.datenaiss)}}</td>
+                    <td>{{form_widget(form.datenaiss)}}</td>
+                    <td>{{form_errors(form.datenaiss)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.lieunaiss)}}</td>
+                    <td>{{form_widget(form.lieunaiss)}}</td>
+                    <td>{{form_errors(form.lieunaiss)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.telephone)}}</td>
+                    <td>{{form_widget(form.telephone)}}</td>
+                    <td>{{form_errors(form.telephone)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.adresse)}}</td>
+                    <td>{{form_widget(form.adresse)}}</td>
+                    <td>{{form_errors(form.adresse)}}</td>
+
+                </tr>
+
+                <tr>
+                    <td>{{form_label(form.cp)}}</td>
+                    <td>{{form_widget(form.cp)}}</td>
+                    <td>{{form_errors(form.cp)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.ville)}}</td>
+                    <td>{{form_widget(form.ville)}}</td>
+                    <td>{{form_errors(form.ville)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.login)}}</td>
+                    <td>{{form_widget(form.login)}}</td>
+                    <td>{{form_errors(form.login)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.mdp)}}</td>
+                    <td>{{form_widget(form.mdp)}}</td>
+                    <td>{{form_errors(form.mdp)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_label(form.idcorpsmetier)}}</td>
+                    <td>{{form_widget(form.idcorpsmetier)}}</td>
+                    <td>{{form_errors(form.idcorpsmetier)}}</td>
+
+                <tr>
+                <tr>
+                    <td>{{form_row(form.Valider)}}</td>
+                    <td class="tdAnnuler">{{form_row(form.Annuler)}}</td>
+                </tr>
+
+
+            </table>
+
+            {{ form_rest(form) }}
+            {{form_end(form)}}
+        {%endif%}
+
+        {% if message is defined %}
+        </h3>{{message}}</h3>
+    {%endif%}
+
+</form>
+
+{#<form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+    <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+
+<footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>
+
+
+
+
+

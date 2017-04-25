@@ -1,0 +1,48 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bati-Interim</title>
+        
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+</head>
+<body>
+    
+     {{ include("BatiBundle:Template:ConnectedMenuE.html.twig") }}
+Liste des artisans par corps de métier  
+{% if formCorpsmetier is defined %}
+    {{form(formCorpsmetier)}}
+{%endif%}
+
+ 
+{% if lesArtisans is defined %}
+    <table class='table table-bordered'>  
+    {% for unArtisan in lesArtisans %}
+        <tr>
+            <td>{{unArtisan.nom}}</td>
+            <td>{{unArtisan.prenom}}</td>
+            <td>
+                <form class ="formConnexion" action="{{ path('ConsulterConges') }}" method="GET">
+                    <input  type="submit" value="Consulter ses congés" />
+                    <input type="hidden" name="idArtisan" value="{{unArtisan.id}}">  
+                    
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    
+ {% endif%}
+
+</table>
+ 
+ {#<form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+                <input type="submit" class="btn btn-default" value="Retour" />
+</form>#}
+ 
+ </body>
+ 
+ <footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>

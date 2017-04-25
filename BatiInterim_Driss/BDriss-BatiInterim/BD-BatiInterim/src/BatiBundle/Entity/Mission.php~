@@ -1,0 +1,80 @@
+<?php
+
+namespace BatiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mission
+ *
+ * @ORM\Table(name="mission", indexes={@ORM\Index(name="FK_Mission_idCorpsMetier", columns={"idCorpsMetier"}), @ORM\Index(name="FK_Mission_idChantier", columns={"idChantier"})})
+ * @ORM\Entity(repositoryClass="BatiBundle\Entity\MissionRepository")
+ */
+class Mission
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=50, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDebut", type="date", nullable=false)
+     */
+    private $datedebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="date", nullable=false)
+     */
+    private $datefin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbArtisans", type="integer", nullable=false)
+     */
+    private $nbartisans;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prixJournalier", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prixjournalier;
+
+    /**
+     * @var \Chantier
+     *
+     * @ORM\ManyToOne(targetEntity="Chantier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idChantier", referencedColumnName="id")
+     * })
+     */
+    private $idchantier;
+
+    /**
+     * @var \Corpsmetier
+     *
+     * @ORM\ManyToOne(targetEntity="Corpsmetier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCorpsMetier", referencedColumnName="id")
+     * })
+     */
+    private $idcorpsmetier;
+
+
+}

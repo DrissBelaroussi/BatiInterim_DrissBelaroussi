@@ -1,0 +1,151 @@
+
+
+Connexion:
+    path:     /home
+    defaults: { _controller: BatiBundle:Default:connexion }
+
+ConnexionA:
+    path:     /home/connexionA
+    defaults: { _controller: BatiBundle:Default:connexionA }
+    
+ConnexionE:
+    path:     /home/connexionE
+    defaults: { _controller: BatiBundle:Default:connexionE }
+    
+GestionArtisan:
+    path:     /home/GestionA
+    defaults: { _controller: BatiBundle:Default:gestionA }
+    
+GestionEntrepreneur:
+    path:     /home/GestionE
+    defaults: { _controller: BatiBundle:Default:gestionE }
+    
+CreerArtisan:
+    path:     /home/CreerArtisan
+    defaults: { _controller: BatiBundle:Default:creerArtisan }
+    
+CreerEntrepreneur:
+    path:     /home/CreerEntrepreneur
+    defaults: { _controller: BatiBundle:Default:creerEntrepreneur }
+    
+ModifierArtisan:
+    path:     /home/ModifierArtisan
+    defaults: { _controller: BatiBundle:Default:modifierArtisan }
+    
+ModifierEntrepreneur:
+    path:     /home/ModifierEntrepreneur
+    defaults: { _controller: BatiBundle:Default:modifierEntrepreneur }
+    
+SupprimerArtisan:
+    path:     /home/SupprimerArtisan
+    defaults: { _controller: BatiBundle:Default:supprimerArtisan }
+    
+SupprimerEntrepreneur:
+    path:     /home/SupprimerEntrepreneur
+    defaults: { _controller: BatiBundle:Default:supprimerEntrepreneur }
+    
+AfficherArtisans:
+    path:     /home/AfficherArtisans
+    defaults: { _controller: BatiBundle:Default:afficherArtisans }
+    
+AfficherEntrepreneurs:
+    path:     /home/AfficherEntrepreneurs
+    defaults: { _controller: BatiBundle:Default:afficherEntrepreneurs }
+    
+GererArtisans:
+    path:     /home/GererArtisans
+    defaults: { _controller: BatiBundle:Default:gererArtisans }
+    
+GererChantiers:
+    path:     /home/GererChantiers
+    defaults: { _controller: BatiBundle:Default:gererChantiers }
+    
+ConsulterAffectations:
+    path:     /home/ConsulterAffectations
+    defaults: { _controller: BatiBundle:Default:consulterAffectations }
+    
+CreerChantier:
+    path:     /home/CreerChantier
+    defaults: { _controller: BatiBundle:Default:creerChantier }
+    
+ConsulterChantiers:
+    path:     /home/ConsulterChantier
+    defaults: { _controller: BatiBundle:Default:consulterChantiers }
+    
+
+CreerMission:
+    path:     /home/CreerMission
+    defaults: { _controller: BatiBundle:Default:creerMission }
+    
+ConsulterMissions:
+    path:     /home/ConsulterMissions
+    defaults: { _controller: BatiBundle:Default:consulterMissions }  
+    
+ConsulterConges:
+    path:     /home/ConsulterConges
+    defaults: { _controller: BatiBundle:Default:consulterConges }
+    
+ConsulterMesConges:
+    path:     /home/ConsulterMesConges
+    defaults: { _controller: BatiBundle:Default:consulterMesConges }
+    
+    
+AffecterArtisans:
+    path:     /home/AffecterArtisans
+    defaults: { _controller: BatiBundle:Default:affecterArtisans }
+    
+Affectation:
+    path:     /home/Affectation
+    defaults: { _controller: BatiBundle:Default:affectation }
+
+ModifierCoordonnees:
+    path:     /home/ModifierCoordonnees
+    defaults: { _controller: BatiBundle:Default:modifierCoordonnees }
+    
+ChangeMdpA:
+    path:     /home/ChangeMdpA
+    defaults: { _controller: BatiBundle:Default:changeMdpA }
+    
+ChangeMdpE:
+    path:     /home/ChangeMdpE
+    defaults: { _controller: BatiBundle:Default:changeMdpE }
+    
+ChangeMdpG:
+    path:     /home/ChangeMdpG
+    defaults: { _controller: BatiBundle:Default:changeMdpG}
+    
+Deconnexion:
+    path:     /home/Deconnexion
+    defaults: { _controller: BatiBundle:Default:deconnexion}
+    
+AccepterConge:
+    path:     /home/AccepterConge
+    defaults: { _controller: BatiBundle:Default:accepterConge}
+
+RefuserConge:
+    path:     /home/RefuserConge
+    defaults: { _controller: BatiBundle:Default:refuserConge}
+    
+CreerChefChantier:
+    path:     /home/CreerChefChantier
+    defaults: { _controller: BatiBundle:Default:creerChefChantier}
+    
+AffecterChef:
+    path:     /home/AffecterChef
+    defaults: { _controller: BatiBundle:Default:affecterChef}
+    
+RadierChef:
+    path:     /home/RadierChef
+    defaults: { _controller: BatiBundle:Default:radierChef}
+    
+EcarterArtisan:
+    path:     /home/EcarterArtisan
+    defaults: { _controller: BatiBundle:Default:ecarterArtisan}
+    
+    
+    
+    
+
+
+    
+

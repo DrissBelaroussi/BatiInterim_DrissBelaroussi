@@ -1,0 +1,125 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bati-Interim</title>
+
+        {% stylesheets '@BatiBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+         {{ include("BatiBundle:Template:ConnectedMenuA.html.twig") }}
+        <h3>Demande de congé</h3>
+
+        {% if form is defined %}
+           {{form_start(form)}}
+           <table class="tableForm">
+               <tr>
+                   <td>{{form_label(form.datedebut)}}</td>      
+                    <td>{{form_widget(form.datedebut)}}</td>
+                    <td>{{form_errors(form.datedebut)}}</td>
+                     <td rowspan=2>{{form_row(form.valider)}}</td>
+               </tr>
+                
+                
+               <tr >
+                 
+                  
+                   <td>{{form_label(form.datefin)}}</td>      
+                    <td>{{form_widget(form.datefin)}}</td>
+                    <td>{{form_errors(form.datefin)}}</td>
+                    
+                    
+               </tr>
+               
+              
+           </table>
+            {{form_end(form)}}
+        {%endif%}
+
+        {% if message is defined %}
+        </h3>{{message}}</h3>
+    {%endif%}
+
+
+
+ <h3>Consultation des congés</h3>
+
+<div class="contentTab">
+    <div class ='tabGauche'>
+        <h4>Jours de congé acceptés</h4>
+        {% if congesAcc is defined %}
+            <table class='table table-bordered'>  
+                <tr>            
+                    <th> Date de début </th>
+                    <th>Date de fin </th>            
+                </tr>
+                {% for unConge in congesAcc %}
+                    <tr>            
+                        <td>{{ unConge.datedebut | date('d-m-Y') }}</td>
+                        <td>{{ unConge.datefin | date('d-m-Y') }}</td>  
+                        <td>
+                            <form class ="formConnexion" action="{{ path('ConsulterMesConges') }}" method="POST">
+                                <input  type="submit" class="btn btn-inverse" value="Supprimer" />
+                                <input type="hidden" name="idConge" value="{{unConge.id}}">                       
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif%}
+
+    </div>
+
+
+
+
+
+
+    <div class ='tabDroite'>
+        <h4>Jours de congé en attente</h4>
+        {% if congesAtt is defined %}
+
+            <table class='table table-bordered'>  
+
+
+                <tr>            
+                    <th> Date de début </th>
+                    <th>Date de fin </th>            
+                </tr>
+                {% for unConge in congesAtt %}
+                    <tr>            
+                        <td>{{ unConge.datedebut | date('d-m-Y') }}</td>
+                        <td>{{ unConge.datefin | date('d-m-Y') }}</td>   
+                        <td>
+                            <form class ="formConnexion" action="{{ path('ConsulterMesConges') }}" method="POST">
+                                <input  type="submit"  class="btn btn-inverse" value="Supprimer" />
+                                <input type="hidden" name="idConge" value="{{unConge.id}}">                       
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        {% endif%}
+
+    </div>
+</div>
+
+{#<div class="retour2tab ">
+    <table class="tableBoutons" > 
+        <tr>
+            <td>
+                <form  class ="formConnexion" action="{{ path('Connexion') }}" method="post">
+                    <input type="submit" class="btn btn-default" value="Retour" />
+                </form> 
+            </td>
+        </tr>
+    </table>
+</div>#}
+</body>
+
+<footer>
+    {{ include("BatiBundle:Template:Footer.html.twig") }}
+</footer>
